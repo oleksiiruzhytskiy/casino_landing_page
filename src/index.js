@@ -1,13 +1,6 @@
 import './styles/styles.scss';
 import './styles/media.scss';
 
-
-window.addEventListener('load', () => {
-    document.querySelector('.preloader').style.display = 'none';
-    document.querySelector('.page').style.display = 'flex';
-  });
-  
-
 const tabButtons = document.querySelectorAll('.tabs__btn');
 const phoneTab = document.querySelector('.registration-form__field--phone');
 const emailTab = document.querySelector('.registration-form__field-group--email');
@@ -67,36 +60,58 @@ tabButtons.forEach(btn =>
   btn.addEventListener('click', () => switchTab(btn.dataset.tab))
 );
 
-form.addEventListener('submit', e => {
-  e.preventDefault();
-
-  const tab = getActiveTab();
-  let isValid = false;
-  let message = '';
-
-  if (tab === 'phone') {
-    isValid = validate.phone(phoneInput.value);
-    if (isValid) {
-      phoneInput.value = '';
-      message = 'Регистрация по телефону успешна!';
+form.addEventListener('submit', async e => {
+    e.preventDefault();
+  
+    const tab = getActiveTab();
+    let isValid = false;
+    let message = '';
+    let payload;
+  
+    if (tab === 'phone') {
+      isValid = validate.phone(phoneInput.value);
+      payload = { phone: phoneInput.value };
+      if (!isValid) {
+        message = 'Пожалуйста, введите корректный номер телефона';
+      }
     } else {
-      message = 'Пожалуйста, введите корректный номер телефона';
+      isValid =
+        validate.email(emailInput.value) && validate.password(passwordInput.value);
+      payload = { email: emailInput.value, password: passwordInput.value };
+      if (!isValid) {
+        message = 'Пожалуйста, заполните все поля корректно';
+      }
     }
-  } else {
-    isValid =
-      validate.email(emailInput.value) && validate.password(passwordInput.value);
+  
     if (isValid) {
-      emailInput.value = '';
-      passwordInput.value = '';
-      message = 'Регистрация по email успешна!';
-    } else {
-      message = 'Пожалуйста, заполните все поля корректно';
+      try {
+        const response = await fetch('https://jsonplaceholder.typicode.com/posts', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+        });
+  
+        const data = await response.json();
+        console.log('Моковый ответ API:', data);
+  
+        message = tab === 'phone'
+          ? 'Регистрация по телефону успешна!'
+          : 'Регистрация по email успешна!';
+  
+        phoneInput.value = '';
+        emailInput.value = '';
+        passwordInput.value = '';
+      } catch (err) {
+        console.error(err);
+        message = 'Ошибка при отправке формы';
+        isValid = false;
+      }
     }
-  }
-
-  updateSubmitButton();
-  showMessage(message, isValid ? 'success' : 'error');
-});
+  
+    updateSubmitButton();
+    showMessage(message, isValid ? 'success' : 'error');
+  });
+  
 
 function showMessage(text, type = 'success') {
   const div = document.createElement('div');
