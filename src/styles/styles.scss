@@ -1,0 +1,348 @@
+$base-color-base-color-20: rgba(255, 255, 255, 0.2);
+
+:root {
+  --logo-gradient: linear-gradient(0deg, #e9b352 0%, #d6803b 100%);
+  --white: #fff;
+  --input-bg: rgba(0, 0, 0, 0.35);
+  --input-border: rgba(255, 255, 255, 0.12);
+  --card-radius: 28px;
+  font-family: Inter, "Helvetica Neue", Arial, sans-serif;
+}
+
+@mixin font-inter($weight: 400, $size: null, $line-height: null) {
+  font-family: Inter, sans-serif;
+  font-weight: $weight;
+  
+  @if $size {
+    font-size: $size;
+  }
+  
+  @if $line-height {
+    line-height: $line-height;
+  }
+}
+
+@mixin text-center {
+  text-align: center;
+}
+
+@mixin text-white {
+  color: var(--white);
+}
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin input-styles {
+  padding: 12px 14px;
+  border-radius: 10px;
+  background: var(--input-bg);
+  border: 1px solid var(--input-border);
+  color: var(--white);
+  outline: none;
+  font-size: 15px;
+}
+
+@mixin absolute-cover {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+*,
+::after,
+::before {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+  font-family: "Arial", sans-serif;
+  background-color: #7a7a81;
+  overflow: hidden;
+}
+
+.page {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10%;
+
+  .background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+
+    &__gradient {
+      position: absolute;
+      width: 100%;
+      height: 146.965px;
+      background: linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, #000 100%);
+      mix-blend-mode: multiply;
+      z-index: 1;
+    }
+
+    &__main,
+    &__decor {
+      @include absolute-cover;
+    }
+
+    &__decor {
+      object-fit: contain;
+    }
+
+    &__coins {
+      width: 100%;
+      position: absolute;
+      bottom: 0;
+      object-fit: contain;
+      transform: scale(2.5);
+    }
+
+    &__slot {
+      position: absolute;
+      bottom: -14%;
+      right: -16%;
+      width: 312.488px;
+      object-fit: contain;
+    }
+  }
+
+  .header {
+    position: relative;
+    @include flex-center;
+    width: 100%;
+    padding: 24px;
+    z-index: 1;
+
+    .header__auth {
+      width: 100%;
+      @include flex-center;
+      justify-content: flex-end;
+      gap: 24px;
+
+      button {
+        @include flex-center;
+        width: 90px;
+        height: 34px;
+        padding: 8px 17px;
+        gap: 6px;
+        border-radius: 8px;
+        border: 1px solid #fff;
+        @include text-white;
+        @include text-center;
+        @include font-inter(700, 14px);
+        text-transform: uppercase;
+        background-color: transparent;
+        box-shadow: 0 0 15px 0 rgba(233, 179, 82, 0.4);
+      }
+
+      .lang-switcher {
+        @include flex-center;
+        gap: 8px;
+
+        &__flag {
+          border-radius: 50%;
+        }
+
+        &__text {
+          @include text-white;
+          @include font-inter(600, 16px);
+          text-transform: uppercase;
+        }
+
+        &__arrow {
+          fill: white;
+        }
+      }
+    }
+  }
+
+  .registration-card {
+    position: relative;
+    width: clamp(349.566px, 92%, 557px);
+    height: auto;
+    border-radius: var(--card-radius);
+    border: 0.628px solid #fff;
+    background: rgba(0, 0, 0, 0.51);
+    backdrop-filter: blur(9.73px);
+    padding-bottom: 35px;
+    z-index: 1;
+
+    .registration-card__logo {
+      display: block;
+      margin: -18% auto 0;
+      width: 241px;
+      height: 121px;
+    }
+
+    .registration-card__content {
+      width: 90%;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+
+      .registration-card__title {
+        @include text-white;
+        text-align: justify;
+        @include font-inter(900, 28.428px, 36.456px);
+      }
+
+      .tabs {
+        display: flex;
+        width: 290.119px;
+        height: 40.119px;
+        padding: 2.294px 3.255px 2.344px 1px;
+        align-items: flex-start;
+        gap: 13.256px;
+        border-radius: 10.03px;
+        border: 1.672px solid $base-color-base-color-20;
+
+        button {
+          width: 50%;
+          height: 100%;
+          background: transparent;
+          border: none;
+          color: rgba(255, 255, 255, 0.6);
+          @include text-center;
+          @include font-inter(600, 11.752px, 16.716px);
+
+          &.tabs__btn--active {
+            border-radius: 6.687px;
+            background: #ce8400;
+          }
+        }
+      }
+
+      form {
+        min-width: 290px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        margin-bottom: 10px;
+
+        .registration-form__field--phone {
+          position: relative;
+          @include flex-center;
+
+          .registration-form__icon {
+            position: absolute;
+            left: 8px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 18px;
+            aspect-ratio: 1;
+            background-image: url("../assets/sign.svg");
+            background-size: contain;
+            background-repeat: no-repeat;
+            z-index: 1;
+            pointer-events: none;
+          }
+
+          #phone {
+            width: 100%;
+            min-width: 290px;
+            min-height: 36.776px;
+            color: #a4a4a4;
+            @include font-inter(500, 10.397px, 10.397px);
+            padding-left: 30px;
+          }
+        }
+
+        .registration-form__field-group--email {
+          display: none;
+          flex-direction: column;
+          @include text-center;
+          gap: 5px;
+
+          #email,
+          #password {
+            width: 100%;
+            min-width: 290px;
+            color: #a4a4a4;
+            @include font-inter(500, 10.397px, 10.397px);
+          }
+        }
+
+        input {
+          @include input-styles;
+        }
+
+        .registration-form__submit {
+          @include flex-center;
+          width: 100%;
+          min-width: 289px;
+          height: 36.776px;
+          padding: 10px 26.746px;
+          margin: auto;
+          border-radius: 6.687px;
+          background: #664620;
+          color: rgba(0, 0, 0, 0.6);
+          @include font-inter(700, 11.752px);
+          line-height: 140%;
+          text-transform: uppercase;
+          border: none;
+          cursor: pointer;
+
+          &.registration-form__submit--active {
+            border-radius: 7.853px;
+            background: #e9b352;
+          }
+        }
+      }
+
+      .registration-card__footer {
+        color: #797979;
+        @include text-center;
+        @include font-inter(400, 9.363px, 140%);
+
+        a {
+          background: var(--logo-gradient);
+          background-clip: text;
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          @include font-inter(700, 9.363px, 140%);
+          text-decoration: underline;
+          text-decoration-color: #e9b352;
+        }
+      }
+    }
+  }
+
+  .visible {
+    display: flex !important;
+  }
+
+  .hidden {
+    display: none !important;
+  }
+}
+
+.registration-message {
+  position: fixed;
+  top: 2%;
+  left: 1%;
+  width: auto;
+  height: 50px;
+  @include flex-center;
+  padding: 5px 10px;
+  border-radius: 10px;
+  color: white;
+  background-color: #e9b352;
+  z-index: 10;
+  transition: all 0.3s ease-in-out;
+}

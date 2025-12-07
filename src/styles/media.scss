@@ -1,0 +1,106 @@
+@media screen and (min-width: 720px) {
+  .page {
+    .background {
+      &__decor {
+        z-index: 1;
+        pointer-events: none;
+      }
+
+      &__coins {
+        transform: scale(1.1);
+        bottom: -2%;
+        z-index: 1;
+        pointer-events: none;
+      }
+
+      &__slot {
+        width: 62%;
+        height: 100%;
+        bottom: 1%;
+        left: auto;
+        right: calc((100vw - clamp(349.566px, 92%, 557px)) / 2 - 20px);
+        transform: translateX(74%);
+        object-fit: contain;
+      }
+    }
+
+    .registration-card {
+      .registration-card__logo {
+        width: 433px;
+        height: 217px;
+        margin: -21% auto 0;
+      }
+
+      .registration-card__content {
+        .registration-card__title {
+          font-size: 45.297px;
+          line-height: 58.09px;
+        }
+
+        .tabs {
+          width: 462.278px;
+          height: 63.926px;
+          padding: 5.248px 6.778px 5.33px 0;
+
+          button {
+            font-size: 18.725px;
+          }
+        }
+
+        form {
+          .registration-form__field--phone {
+            width: 460.802px;
+            height: 58.599px;
+            padding: 19.977px 0;
+
+            .registration-form__icon {
+              width: 25px;
+              aspect-ratio: 1;
+            }
+
+            #phone {
+              display: flex;
+              width: 460.802px;
+              height: 58.599px;
+              padding: 19.977px 0;
+              padding-left: 40px;
+              font-size: 16.443px;
+              line-height: 16.443px;
+            }
+          }
+
+          .registration-form__field-group--email {
+            width: 462.278px;
+            height: 149.161px;
+
+            #email,
+            #password {
+              display: flex;
+              width: 460.802px;
+              height: 58.599px;
+              padding: 19.977px 0;
+              padding-left: 40px;
+              font-size: 16.443px;
+              line-height: 16.443px;
+            }
+          }
+
+          .registration-form__submit {
+            width: 462.278px;
+            height: 58.599px;
+            padding: 0 0.729px 4.16px 0.746px;
+            font-size: 18.725px;
+          }
+        }
+
+        .registration-card__footer {
+          font-size: 18.725px;
+
+          a {
+            font-size: 18.725px;
+          }
+        }
+      }
+    }
+  }
+}
