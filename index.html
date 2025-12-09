@@ -11,33 +11,40 @@
         <div class="background__gradient"></div>
         <img
           class="background__main"
-          src="./src/assets/1920w_light_1x.png"
-          srcset="
-            ./src/assets/1920w_light_1x.png 1x,
-            ./src/assets/1920w_light_2x.png 2x
-          "
+          src="./src/assets/1920w_light_1x.webp"
           alt="Фоновое изображение"
+          decoding="async"
+          width="1920"
+          height="1080"
+          fetchpriority="lazy"
         />
         <img
           class="background__decor"
-          src="./src/assets/Decor_element_1x.png"
-          srcset="
-            ./src/assets/Decor_element_1x.png 1x,
-            ./src/assets/Decor_element_2x.png 2x
-          "
+          src="./src/assets/Decor_element_1x.webp"
           alt="Декоративный элемент"
+          loading="lazy"
+          decoding="async"
+          width="721"
+          height="331"
         />
         <img
           class="background__coins"
-          src="./src/assets/coins_1x.png"
-          srcset="./src/assets/coins_1x.png 1x, ./src/assets/coins_2x.png 2x"
+          src="./src/assets/coins_1x.webp"
+         
           alt="Монеты"
+          loading="eager"
+          decoding="async"
+          fetchpriority="high"
         />
         <img
           class="background__slot"
-          src="./src/assets/slot_1x.png"
-          srcset="./src/assets/slot_1x.png 1x, ./src/assets/slot_2x.png 2x"
+          src="./src/assets/slot_1x.webp"
+          
           alt="Слот"
+          loading="lazy"
+          decoding="async"
+          width="547"
+          height="547"
         />
       </div>
 
@@ -81,9 +88,12 @@
       <main class="registration-card" aria-labelledby="promo-title">
         <img
           class="registration-card__logo"
-          src="./src/assets/logo_1x.png"
-          srcset="./src/assets/logo_1x.png 1x, ./src/assets/logo_2x.png 2x"
+          src="./src/assets/logo_2x.webp"
           alt="Логотип"
+          loading="lazy"
+          decoding="async"
+          width="422"
+          height="212"
         />
 
         <div class="registration-card__content">

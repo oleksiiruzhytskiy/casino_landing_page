@@ -8,7 +8,6 @@
 
       &__coins {
         transform: scale(1.1);
-        bottom: -2%;
         z-index: 1;
         pointer-events: none;
       }
@@ -40,7 +39,7 @@
         .tabs {
           width: 462.278px;
           height: 63.926px;
-          padding: 5.248px 6.778px 5.33px 0;
+          padding: 5.248px 6.778px 5.33px 3px;
 
           button {
             font-size: 18.725px;
